@@ -2,6 +2,7 @@
 	<div class="col-lg-3 cart-list-box">
 		<div class="text-center display-4">
 			<i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
+			<span class="float-right"><i class="fas fa-house-damage"></i></span> <!-- replace this with a storefront-->
 		</div>
 		<hr />
 
@@ -77,12 +78,12 @@ export default {
 
 @keyframes slidein {
 	from {
-		margin-left: -100%;
+		margin-left: -90%;
 		color: rgb(20, 20, 3);
 	}
 
 	to {
-		margin-left: 120%;
+		margin-left: 60%;
 		color: green;
 	}
 }
