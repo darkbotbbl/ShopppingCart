@@ -2,7 +2,6 @@
 	<div class="col-lg-3 cart-list-box">
 		<div class="text-center display-4">
 			<i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
-			<span class="float-right"><i class="fas fa-house-damage"></i></span> <!-- replace this with a storefront-->
 		</div>
 		<hr />
 
@@ -70,7 +69,7 @@ export default {
 }
 
 .cart-icon{
-	animation-duration: 1s;
+	animation-duration: 5s;
 	animation-name: slidein;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
