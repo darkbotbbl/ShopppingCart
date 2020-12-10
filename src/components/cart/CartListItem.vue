@@ -1,9 +1,9 @@
 <template>
     <div>
         <div>
-            <span class="float-left item-title">The Fullstack Hoodie</span>
+            <span class="float-left item-title font-weight-bold">The Fullstack Hoodie</span>
             <span class="float-right arrow-icons">
-                <i class="fa fa-arrow-circle-up mr- arrow-up" aria-hidden="true"></i>
+                <i class="fa fa-arrow-circle-up mr-1 arrow-up" aria-hidden="true"></i>
                 <i class="fa fa-arrow-circle-down arrow-down" aria-hidden="true"></i>
             </span>
         </div><br />

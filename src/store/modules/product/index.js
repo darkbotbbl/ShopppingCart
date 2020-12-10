@@ -18,7 +18,7 @@ const mutations = {
 const actions = {
     async getProductItems({ commit }) {
         try {
-            let items = await axios.get("http://localhost:3000/products")
+            let items = await axios.get("/api/products")
             commit("UPDATE_PRODUCT_ITEMS", items.data)
         } catch (error) {
             console.log("An error occurred while fetching the data in the actions.")
