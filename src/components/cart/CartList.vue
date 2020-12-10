@@ -44,10 +44,6 @@ export default {
 	overflow-y: auto important;
 }
 
-.cart-list-box div:nth-child(1) {
-	margin-top: 25vh;
-}
-
 .tq-box {
 	font-size: 1rem;
 }

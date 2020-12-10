@@ -5,13 +5,12 @@
         </div>
         <hr />
         
-        <app-product-list-item></app-product-list-item>
-        <app-product-list-item></app-product-list-item>
-        <app-product-list-item></app-product-list-item>
-        <app-product-list-item></app-product-list-item>
+        <div v-for="productItem in productItems" :key="productItem.id">
+            <appProductListItem :productItem="productItem"/>
+        </div>
 
         <div class="mb-5">
-            <span class="float-right number-of-products">#products: 6</span>
+            <span class="float-right number-of-products">#products: {{ productCount }}</span>
         </div>
     </div>
 </template>
@@ -19,6 +18,7 @@
 
 <script>
 import ProductListItem from "./ProductListItem"
+import { mapGetters } from "vuex"
 
 export default {
     name: "ProductList",
@@ -29,6 +29,20 @@ export default {
     },
     components: {
         appProductListItem: ProductListItem,
+    },
+    computed: {
+        ...mapGetters([
+            "productItems",
+            "productCount"
+        ])
+    }
+    ,
+    created() {
+        try {
+            this.$store.dispatch("getProductItems")
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 </script>

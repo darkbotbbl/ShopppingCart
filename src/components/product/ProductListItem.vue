@@ -1,11 +1,11 @@
 <template>
     <div>
         <div>
-            <span class="float-left p-item-title">The fullstack hoodie</span>
+            <span class="float-left p-item-title">{{ productItem.title }}</span>
             <span class="float-right"><button class="btn btn-success">Add to Cart</button></span><br />
             <p class="item-description mt-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, numquam unde, dolorum neque corrupti enim aliquid soluta nobis<br>
-                <span class="item-price">$19.99</span>
+                {{ productItem.description }}<br>
+                <span class="item-price">${{ productItem.price }}</span>
             </p>
         </div><br>
     </div>
@@ -19,7 +19,8 @@ export default {
         return {
 
         }
-    }
+    },
+    props: ["productItem"]
 }
 </script>
 
