@@ -1,4 +1,5 @@
 import axios from "axios"
+import * as types from "./mutation-types"
 
 const state = {
     cartItems: [],
@@ -19,7 +20,7 @@ const getters = {
 }
 
 const mutations = {
-    UPDATE_CART_ITEMS(state, items) {
+    [types.UPDATE_CART_ITEMS] (state, items) {
         state.cartItems = items
     }
 }
@@ -28,7 +29,7 @@ const actions = {
     async getCartItems({ commit }) {
         try {
             let items = await axios.get('/api/cart')
-            commit("UPDATE_CART_ITEMS", items.data)
+            commit(types.UPDATE_CART_ITEMS, items.data)
         } catch (error) {
             console.log("An error occured trying to get cart items")
         }
@@ -36,7 +37,7 @@ const actions = {
     async addCartItem({ commit }, cartItem) {
         try {
             let items = await axios.post("/api/cart", cartItem)
-            commit("UPDATE_CART_ITEMS", items.data)
+            commit(types.UPDATE_CART_ITEMS, items.data)
         } catch (error) {
             console.log("An error occured while adding a cart item")
         }
@@ -44,7 +45,7 @@ const actions = {
     async removeCartItem({ commit }, cartItem) {
         try {
             let items = await axios.post("/api/cart/delete", cartItem)
-            commit("UPDATE_CART_ITEMS", items.data)
+            commit(types.UPDATE_CART_ITEMS, items.data)
         } catch (error) {
             console.log("An error occured removing a cart item")
         }
@@ -52,7 +53,7 @@ const actions = {
     async removeAllCartItems({ commit }) {
         try {
             let items = await axios.post("/api/cart/delete/all")
-            commit("UPDATE_CART_ITEMS", items.data)
+            commit(types.UPDATE_CART_ITEMS, items.data)
         } catch (error) {
             console.log("An error coccured while deleting all cart items")
         }
