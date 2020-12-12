@@ -2,7 +2,9 @@
     <div>
         <div>
             <span class="float-left p-item-title">{{ productItem.title }}</span>
-            <span class="float-right"><button class="btn btn-success">Add to Cart</button></span><br />
+            <span class="float-right">
+                <button class="btn btn-success" @click="addCartItem(productItem)">Add to Cart</button>
+            </span><br />
             <p class="item-description mt-2">
                 {{ productItem.description }}<br>
                 <span class="item-price">${{ productItem.price }}</span>
@@ -13,12 +15,19 @@
 
 
 <script>
+import { mapActions } from "vuex"
+
 export default {
     name: "ProductListItem",
     data() {
         return {
 
         }
+    },
+    methods: {
+        ...mapActions([
+            "addCartItem"
+        ])
     },
     props: ["productItem"]
 }

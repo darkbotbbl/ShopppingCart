@@ -5,8 +5,17 @@ const state = {
 }
 
 const getters = {
-    cartItems: state => state.cartItems,
-    // TODO - Write the getters to find the total price and the total quantity
+    cartItems: state => state.cartItems, 
+    cartTotalPrice: state => {
+        return state.cartItems.reduce((acc, cartItem) => {
+            return (acc + (cartItem.price * cartItem.quantity))
+        }, 0).toFixed(2)
+    },
+    cartTotalQuantity: state => {
+        return state.cartItems.reduce((acc, cartItem) => {
+            return acc + cartItem.quantity
+        }, 0)
+    }
 }
 
 const mutations = {

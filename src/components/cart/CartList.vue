@@ -5,19 +5,21 @@
 		</div>
 		<hr />
 
-		<app-cart-list-item></app-cart-list-item>
-		
+		<span v-for="cartItem in cartItems" :key="cartItem.id">
+			<app-cart-list-item :cartItem="cartItem"></app-cart-list-item>
+		</span>
+
 		<div class="m-3 tq-box">
-			<span class="float-left total-quantity">Total Quantity: <span class="total-quantity-number">2</span></span>
-			<span class="float-right remove"><i class="fas fa-calendar-alt"></i> Remove all</span>
+			<span class="float-left total-quantity">Total Quantity: <span class="total-quantity-number">{{ cartTotalQuantity }}</span></span>
+			<span class="float-right remove pointer-hand" @click="removeAllCartItems()"><i class="fas fa-calendar-alt"></i> Remove all</span>
 		</div>
-		<button class="btn btn-info form-control mt-3">Checkout (<span class="total-price">$39.98</span>)</button>
+		<button class="btn btn-info form-control mt-3">Checkout (<span class="total-price">${{ cartTotalPrice }}</span>)</button>
 	</div>
 </template>
 
-
 <script>
 import CartListItem from "./CartListItem"
+import { mapGetters, mapActions } from "vuex"
 
 export default {
 	name: "CartList",
@@ -26,11 +28,33 @@ export default {
 
 		}
 	},
+	computed: {
+		...mapGetters([
+			"cartItems",
+			"cartTotalPrice",
+			"cartTotalQuantity"
+		])
+	},
 	components: {
 		appCartListItem: CartListItem,
+	},
+	methods: {
+		...mapActions(["removeAllCartItems"])
+	},
+	created() {
+		this.$store.dispatch("getCartItems")
 	}
 }
 </script>
+
+/** Global styles */
+<style>
+
+.pointer-hand {
+	cursor: pointer;
+}
+
+</style>
 
 
 <style scoped>
